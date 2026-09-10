@@ -71,13 +71,18 @@ Four customer batches consumed eight source rows, including one rejected row. Pe
 
 ![Customer Change Data Feed batch audit](docs/images/cdf-audit.png)
 
-## Repository
+## Repository layout
 
-- `baseline/`: seven notebooks, JSON fixtures, analytics SQL, design and operations notes, optional existing-cluster bundle.
-- `advanced/`: two notebooks, five-phase fixtures, serverless job deployment helper and offline tests.
-- `docs/VALIDATION.md`: verified scope and known limitations.
+The project currently keeps its Databricks notebooks, fixtures and deployment helpers at the repository root. Key files include:
 
-Start with [baseline setup](baseline/README.md), then [advanced setup](advanced/README.md). Configure your own workspace and catalog. Azure resources and permissions must already exist; this repository does not automatically provision Azure infrastructure.
+- `00_common.py` to `06_validate.py`: baseline lakehouse notebooks.
+- `00_advanced_common.py` and `10_advanced_demo.py`: advanced CDF/SCD/streaming extension.
+- `customers.json`, `products.json`, `regions.json`, `orders.json`: baseline fixtures.
+- `fixtures.json`: advanced five-phase synthetic test data.
+- `deploy.py` and `databricks.yml`: deployment helpers/configuration.
+- `DESIGN.md`, `OPERATIONS.md`, `ADLS_SETUP.md`: implementation and operating notes.
+- `docs/VALIDATION.md`: verified scope and limitations.
+- `docs/PROJECT_EXPLANATION.md`: detailed architecture, implementation walkthrough and interview guide.
 
 ## Cost-conscious execution
 
@@ -92,8 +97,7 @@ Public source contains both logging fixes validated during the demo. It is a por
 ## Local checks
 
 ```bash
-python3 -m unittest discover -s baseline/tests -v
-python3 -m unittest discover -s advanced/tests -v
+python3 -m unittest discover -s . -p 'test_*.py' -v
 ```
 
 No cloud credentials are required for these offline tests. Live Spark and Azure integration are validated separately.
