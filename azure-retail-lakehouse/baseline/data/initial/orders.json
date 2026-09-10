@@ -1,0 +1,2 @@
+{"order_id": "O1", "customer_id": "C1", "product_id": "P1", "order_date": "2026-09-01", "quantity": "2", "unit_price": "100.00", "event_id": "orders-initial-0", "sequence": "1", "updated_at": "2026-09-01T10:00:00Z", "op": "U"}
+{"order_id": "O2", "customer_id": "C1", "product_id": "P2", "order_date": "2026-09-01", "quantity": "1", "unit_price": "50.00", "event_id": "orders-initial-1", "sequence": "1", "updated_at": "2026-09-01T10:00:00Z", "op": "U"}
