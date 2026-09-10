@@ -1,0 +1,56 @@
+bundle:
+  name: azure-retail-lakehouse
+variables:
+  catalog:
+    default: workspace
+  prefix:
+    default: vishnu_retail
+  cluster_id:
+    description: Existing Unity Catalog enabled compute ID; select a supported LTS
+      runtime
+resources:
+  jobs:
+    retail_pipeline:
+      name: ${bundle.target}-vishnu-retail-pipeline
+      max_concurrent_runs: 1
+      tasks:
+      - task_key: bronze
+        existing_cluster_id: ${var.cluster_id}
+        timeout_seconds: 1800
+        max_retries: 1
+        min_retry_interval_millis: 30000
+        notebook_task:
+          notebook_path: ./notebooks/03_bronze.py
+          base_parameters:
+            catalog: ${var.catalog}
+            prefix: ${var.prefix}
+            run_id: '{{job.run_id}}'
+      - task_key: silver
+        existing_cluster_id: ${var.cluster_id}
+        timeout_seconds: 1800
+        max_retries: 1
+        min_retry_interval_millis: 30000
+        notebook_task:
+          notebook_path: ./notebooks/04_silver.py
+          base_parameters:
+            catalog: ${var.catalog}
+            prefix: ${var.prefix}
+            run_id: '{{job.run_id}}'
+        depends_on:
+        - task_key: bronze
+      - task_key: gold
+        existing_cluster_id: ${var.cluster_id}
+        timeout_seconds: 1800
+        max_retries: 1
+        min_retry_interval_millis: 30000
+        notebook_task:
+          notebook_path: ./notebooks/05_gold.py
+          base_parameters:
+            catalog: ${var.catalog}
+            prefix: ${var.prefix}
+            run_id: '{{job.run_id}}'
+        depends_on:
+        - task_key: silver
+targets:
+  dev:
+    default: true

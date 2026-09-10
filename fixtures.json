@@ -1,0 +1,166 @@
+[
+  {
+    "phase": 1,
+    "customers": [
+      {
+        "event_id": "c1-v1",
+        "customer_id": "C1",
+        "sequence": 1,
+        "effective_at": "2026-09-01T00:00:00Z",
+        "customer_name": "Asha Sharma",
+        "email": "asha@example.com",
+        "region": "North",
+        "op": "U"
+      },
+      {
+        "event_id": "c2-v1",
+        "customer_id": "C2",
+        "sequence": 1,
+        "effective_at": "2026-09-01T00:00:00Z",
+        "customer_name": "Ravi Kumar",
+        "email": "ravi@example.com",
+        "region": "East",
+        "op": "U"
+      }
+    ],
+    "web": [
+      {
+        "event_id": "e1",
+        "event_time": "2026-09-01T10:01:00Z",
+        "page": "/shop"
+      },
+      {
+        "event_id": "e2",
+        "event_time": "2026-09-01T10:03:00Z",
+        "page": "/shop"
+      },
+      {
+        "event_id": "e2",
+        "event_time": "2026-09-01T10:03:00Z",
+        "page": "/shop"
+      }
+    ]
+  },
+  {
+    "phase": 2,
+    "customers": [
+      {
+        "event_id": "c1-v3",
+        "customer_id": "C1",
+        "sequence": 3,
+        "effective_at": "2026-09-03T00:00:00Z",
+        "customer_name": "Asha Sharma",
+        "email": "asha.new@example.com",
+        "region": "South",
+        "op": "U"
+      },
+      {
+        "event_id": "c2-delete",
+        "customer_id": "C2",
+        "sequence": 2,
+        "effective_at": "2026-09-02T00:00:00Z",
+        "customer_name": "Ravi Kumar",
+        "email": null,
+        "region": null,
+        "op": "D"
+      }
+    ],
+    "web": [
+      {
+        "event_id": "e3",
+        "event_time": "2026-09-01T10:08:00Z",
+        "page": "/shop"
+      },
+      {
+        "event_id": "e4",
+        "event_time": "2026-09-01T10:02:00Z",
+        "page": "/shop"
+      },
+      {
+        "event_id": "e2",
+        "event_time": "2026-09-01T10:03:00Z",
+        "page": "/shop"
+      }
+    ]
+  },
+  {
+    "phase": 3,
+    "customers": [
+      {
+        "event_id": "c1-v2-late",
+        "customer_id": "C1",
+        "sequence": 2,
+        "effective_at": "2026-09-02T00:00:00Z",
+        "customer_name": "Asha Sharma",
+        "email": "asha.west@example.com",
+        "region": "West",
+        "op": "U"
+      },
+      {
+        "event_id": "c1-v4",
+        "customer_id": "C1",
+        "sequence": 4,
+        "effective_at": "2026-09-04T00:00:00Z",
+        "customer_name": "Asha Sharma",
+        "email": "asha.final@example.com",
+        "region": "South",
+        "op": "U"
+      },
+      {
+        "event_id": "c1-v3",
+        "customer_id": "C1",
+        "sequence": 3,
+        "effective_at": "2026-09-03T00:00:00Z",
+        "customer_name": "Asha Sharma",
+        "email": "asha.new@example.com",
+        "region": "South",
+        "op": "U"
+      }
+    ],
+    "web": [
+      {
+        "event_id": "e5",
+        "event_time": "2026-09-01T10:25:00Z",
+        "page": "/checkout"
+      }
+    ]
+  },
+  {
+    "phase": 4,
+    "customers": [
+      {
+        "event_id": "c3-invalid",
+        "customer_id": "C3",
+        "sequence": 0,
+        "effective_at": "2026-09-04T00:00:00Z",
+        "customer_name": "Ravi Kumar",
+        "email": "invalid-email",
+        "region": "North",
+        "op": "U"
+      }
+    ],
+    "web": [
+      {
+        "event_id": "too-late",
+        "event_time": "2026-09-01T10:01:00Z",
+        "page": "/shop"
+      },
+      {
+        "event_id": "e6",
+        "event_time": "2026-09-01T10:26:00Z",
+        "page": "/checkout"
+      }
+    ]
+  },
+  {
+    "phase": 5,
+    "customers": [],
+    "web": [
+      {
+        "event_id": "e7",
+        "event_time": "2026-09-01T10:45:00Z",
+        "page": "/home"
+      }
+    ]
+  }
+]
